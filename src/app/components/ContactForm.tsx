@@ -138,9 +138,9 @@
 
 //   )
 //}
-'use client'
+ 'use client'
 
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -155,20 +155,20 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Partial<typeof form>>({})
 
   const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-) => {
-  const target = e.target as HTMLInputElement;
-  const { name, type, value, checked } = target;
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement
+    const { name, type, value } = target
 
-  setForm((prev) => ({
-    ...prev,
-    [name]: type === 'checkbox' ? checked : value,
-  }));
-};
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (target as HTMLInputElement).checked : value,
+    }))
+  }
 
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     const newErrors: Partial<typeof form> = {}
 
     if (!form.name) newErrors.name = 'Name is required'
@@ -182,7 +182,8 @@ export default function ContactForm() {
 
     if (Object.keys(newErrors).length === 0) {
       alert('Form submitted successfully!')
-      // You can reset form here if needed
+      // Optionally reset form
+      // setForm({ name: '', phone: '', email: '', message: '', time: '', agree: false })
     }
   }
 
@@ -192,7 +193,6 @@ export default function ContactForm() {
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Contact Dr. Blake</h2>
 
         <form onSubmit={handleSubmit} className="space-y-6 text-gray-800">
-          {/* Name */}
           <div>
             <input
               type="text"
@@ -205,7 +205,6 @@ export default function ContactForm() {
             {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
           </div>
 
-          {/* Phone */}
           <div>
             <input
               type="text"
@@ -218,7 +217,6 @@ export default function ContactForm() {
             {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
           </div>
 
-          {/* Email */}
           <div>
             <input
               type="email"
@@ -231,7 +229,6 @@ export default function ContactForm() {
             {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
           </div>
 
-          {/* Message */}
           <div>
             <textarea
               name="message"
@@ -243,7 +240,6 @@ export default function ContactForm() {
             {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
           </div>
 
-          {/* Preferred Time */}
           <div>
             <input
               type="text"
@@ -256,7 +252,6 @@ export default function ContactForm() {
             {errors.time && <p className="text-red-600 text-sm mt-1">{errors.time}</p>}
           </div>
 
-          {/* Consent */}
           <div className="flex items-start gap-2">
             <input
               type="checkbox"
@@ -271,7 +266,6 @@ export default function ContactForm() {
           </div>
           {errors.agree && <p className="text-red-600 text-sm mt-1">{errors.agree}</p>}
 
-          {/* Submit */}
           <div className="text-center">
             <button
               type="submit"
