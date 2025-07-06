@@ -7,7 +7,7 @@ export default function HeroSec() {
     <section
       id="home"
       className="relative h-screen w-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
-      style={{ backgroundImage: "url('/mmm.jpg')" }}
+      style={{ backgroundImage: "url('/MMM.jpg')" }}
     >
       {/* 🔴 Removed dark overlay */}
 
