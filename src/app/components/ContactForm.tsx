@@ -142,19 +142,8 @@
 
 import { useState, ChangeEvent, FormEvent } from 'react'
 
-type FormData = {
-  name: string
-  phone: string
-  email: string
-  message: string
-  time: string
-  agree: boolean
-}
-
-type FormErrors = Partial<Record<keyof FormData, string>>
-
 export default function ContactForm() {
-  const [form, setForm] = useState<FormData>({
+  const [form, setForm] = useState({
     name: '',
     phone: '',
     email: '',
@@ -163,27 +152,26 @@ export default function ContactForm() {
     agree: false,
   })
 
-  const [errors, setErrors] = useState<FormErrors>({})
+  const [errors, setErrors] = useState<Partial<typeof form>>({})
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  const target = e.target
-  const { name, type, value } = target
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = e.target
+    const { name, type, value } = target
 
-  const newValue = type === 'checkbox' && 'checked' in target
-    ? (target as HTMLInputElement).checked
-    : value
+    const newValue =
+      type === 'checkbox'
+        ? (target as HTMLInputElement).checked
+        : value
 
-  setForm((prev) => ({
-    ...prev,
-    [name]: newValue,
-  }))
-}
+    setForm((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }))
+  }
 
-  
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const newErrors: FormErrors = {}
+    const newErrors: Partial<typeof form> = {}
 
     if (!form.name) newErrors.name = 'Name is required'
     if (!form.phone) newErrors.phone = 'Phone is required'
@@ -195,8 +183,8 @@ export default function ContactForm() {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      alert('Form submitted!')
-      // Here you can handle real submission logic
+      alert('Form submitted successfully!')
+      // You can reset form here if needed
     }
   }
 
@@ -257,7 +245,7 @@ export default function ContactForm() {
             {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
           </div>
 
-          {/* Time */}
+          {/* Preferred Time */}
           <div>
             <input
               type="text"
