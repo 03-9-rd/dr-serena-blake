@@ -154,20 +154,18 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState<Partial<typeof form>>({})
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const target = e.target
-    const { name, type, value } = target
+  const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  const target = e.target as HTMLInputElement;
+  const { name, type, value, checked } = target;
 
-    const newValue =
-      type === 'checkbox'
-        ? (target as HTMLInputElement).checked
-        : value
+  setForm((prev) => ({
+    ...prev,
+    [name]: type === 'checkbox' ? checked : value,
+  }));
+};
 
-    setForm((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }))
-  }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
