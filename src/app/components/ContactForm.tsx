@@ -152,11 +152,9 @@ export default function ContactForm() {
     agree: false,
   })
 
-  const [errors, setErrors] = useState<Partial<typeof form>>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof form, string>>>({})
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement
     const { name, type, value } = target
 
@@ -169,7 +167,7 @@ export default function ContactForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const newErrors: Partial<typeof form> = {}
+    const newErrors: Partial<Record<keyof typeof form, string>> = {}
 
     if (!form.name) newErrors.name = 'Name is required'
     if (!form.phone) newErrors.phone = 'Phone is required'
@@ -182,7 +180,7 @@ export default function ContactForm() {
 
     if (Object.keys(newErrors).length === 0) {
       alert('Form submitted successfully!')
-      // Optionally reset form
+      // Optionally reset form here
       // setForm({ name: '', phone: '', email: '', message: '', time: '', agree: false })
     }
   }

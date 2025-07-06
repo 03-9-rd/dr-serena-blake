@@ -63,8 +63,8 @@ export default function AboutSec() {
           <img
             src="/dr-sarena.jpg"
             alt="Dr. Serena Blake"
-            className="rounded-lg shadow-md w-full h-auto object-cover"
-          />
+            className="rounded-lg shadow-md w-full h-auto object-cover">
+          </img>
         </motion.div>
 
         <motion.div
