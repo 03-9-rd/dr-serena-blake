@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#f7f5ed] text-[#333333] text-center py-10 px-4 border-t border-[#e2e0d2]">
+    <footer className="bg-gray-300 text-[#333333] text-center py-10 px-4 border-t border-[#e2e0d2]">
       <div className="max-w-3xl mx-auto space-y-4 text-sm md:text-base">
         <p className="font-medium text-lg">Dr. Serena Blake, PsyD (Clinical Psychologist)</p>
 

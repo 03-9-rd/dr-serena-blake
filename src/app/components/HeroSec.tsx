@@ -20,7 +20,7 @@ export default function HeroSec() {
         </h2>
         <a
           href="#contact"
-          className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 transition px-6 py-3 text-white rounded-lg shadow-lg text-lg"
+          className="mt-8 inline-block bg-white hover:bg-blue-300 transition px-6 py-3 text-gray-600 rounded-lg shadow-lg text-lg"
         >
           Book a Free Consult
         </a>

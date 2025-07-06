@@ -98,7 +98,7 @@ export default function ContactForm() {
   return (
 
 <section id="contact" className="w-full py-12 px-6 bg-white scroll-mt-20">
-      <div className="max-w-2xl mx-auto bg-white shadow-xl rounded-xl p-8 md:p-10 border border-gray-200">
+      <div className="max-w-2xl mx-auto bg-gray-200 shadow-xl rounded-xl p-8 md:p-10 border border-gray-200">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Contact Dr. Blake</h2>
 
         <form onSubmit={handleSubmit} className="space-y-6 text-gray-800">

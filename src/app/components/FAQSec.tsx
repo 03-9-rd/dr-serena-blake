@@ -50,7 +50,7 @@ export default function FAQSec() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="w-full  bg-white py-16 px-4 scroll-mt-16">
+    <section id="faq" className="w-full  bg-gray-200 py-16 px-4 scroll-mt-16">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
           Frequently Asked Questions

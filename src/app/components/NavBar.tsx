@@ -22,12 +22,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow-md ${
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-gray-300 shadow-md ${
         showNav ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-700">Dr. Serena Blake</h1>
+        <h1 className="text-xl font-bold text-blue-500">Dr. Serena Blake</h1>
 
         {/* Desktop Links */}
         <nav className="hidden md:flex gap-6">
@@ -48,7 +48,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white px-4 pb-4 space-y-2">
+        <div className="md:hidden bg-white  text-black px-4 pb-4 space-y-2">
           <Link href="#home" onClick={() => setIsOpen(false)} className="block">Home</Link>
           <Link href="#about" onClick={() => setIsOpen(false)} className="block">About</Link>
           <Link href="#services" onClick={() => setIsOpen(false)} className="block">Services</Link>
